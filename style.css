@@ -1,0 +1,10 @@
+body {
+  min-height: 100vh;
+}
+
+.bg-img {
+  background-image: url("https://t3.ftcdn.net/jpg/04/21/85/20/360_F_421852062_oLJjfT88cczyu3u28Qy3M2V8xmO8L770.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
