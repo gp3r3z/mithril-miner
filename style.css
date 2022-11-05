@@ -1,5 +1,7 @@
 body {
   min-height: 100vh;
+  font-family: "Press Start 2P", cursive;
+  font-size: large;
 }
 
 .bg-img {
@@ -7,4 +9,18 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+#content {
+  height: auto;
+  width: auto;
+  top: calc(50% - 1000px);
+}
+
+#content model-viewer {
+  min-height: 54vh;
+  min-width: 54vw;
+  top: 0;
+  left: 0;
+  border: none;
 }

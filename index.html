@@ -9,6 +9,13 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Bootstrap CSS v5.2.1 -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
@@ -36,7 +43,7 @@
     </style>
   </head>
 
-  <body class="debug bg-img text-white">
+  <body class="bg-img text-white">
     <header class="container-fluid">
       <!-- SECTION header  -->
       <section class="row text-center"><h1>Mithril Miner</h1></section>
@@ -44,103 +51,107 @@
     <main class="container-fluid">
       <!-- SECTION Main content to click  -->
       <section class="row justify-content-center">
-        <div class="col-4">
-          <img
-            onclick="MiningResource(event)"
-            src="./assets/runite_ore.png"
-            alt=""
-          />
+        <div
+          id="content"
+          class="border-success border-3 border col-12 col-md-1"
+        >
+          <model-viewer
+            onclick="MiningResource()"
+            src="assets/scene.gltf"
+            alt="mithril"
+            camera-controls
+          ></model-viewer>
         </div>
+        <!-- <img src="./assets/runite_ore.png" alt="" /> -->
       </section>
 
       <!-- SECTION User Status -->
       <section class="row justify-content-center">
-        <div class="col-3">
-          ClickPower(+1):<span id="user-click-power">0</span>
+        <div class="col-3 border border-primary rounded-top p-3 bg-secondary">
+          ClickPower:<span id="user-click-power">1</span>
         </div>
-        <div class="col-3">Resources: <span id="user-resource">0</span></div>
-        <div class="col-3">Timer <span id="user-timer">0</span></div>
+        <div class="col-3 border border-primary rounded-top p-3 bg-secondary">
+          Resources: <span id="user-resource">0</span>
+        </div>
+        <div class="col-3 border border-primary rounded-top p-3 bg-secondary">
+          Timer <span id="user-timer">0</span>
+        </div>
       </section>
       <!-- SECTION User options stats-->
-      <section class="row">
+      <section
+        class="row m-0 bg-secondary border-primary border border-3 rounded-top"
+      >
         <!-- SECTION user additional upgrade options -->
-
-        <div class="col-6">
-          <section class="row justify-content-between">
-            <div class="col-5">
+        <div class="col-6 p-3">
+          <section class="row justify-content-between p-3">
+            <div class="col-6 text-center">
               <h4>Click Upgrades</h4>
             </div>
-            <div class="col-5">
+            <div class="col-6 -6 text-center">
               <h4>Automatic Upgrades</h4>
             </div>
           </section>
-          <section class="row justify-content-between">
-            <div class="col-5">
+          <section class="row justify-content-between p-3">
+            <div class="col-5 text-center p-3 bg-dark rounded">
               <button
                 onclick="buyClickUpgrade('pickaxe')"
-                class="btn btn-primary"
+                class="btn btn-primary m-3"
               >
                 Buy
               </button>
               <p>PickAxe: +1</p>
               <p>Price: 10</p>
             </div>
-            <div class="col-5">
-              <button class="btn btn-primary">Buy</button>
+            <div class="col-5 text-center p-3 bg-dark rounded">
+              <button class="btn btn-primary m-3">Buy</button>
               <p>Miner: +10/3s</p>
             </div>
           </section>
-          <section class="row justify-content-between">
-            <div class="col-5">
+          <section class="row justify-content-between p-3">
+            <div class="col-5 text-center p-3 bg-dark rounded">
               <button
                 onclick="buyClickUpgrade('Drill')"
-                class="btn btn-primary"
+                class="btn btn-primary m-3"
               >
                 Buy
               </button>
               <p>Drill: +5</p>
               <p>Price: 15</p>
             </div>
-            <div class="col-5">
-              <button class="btn btn-primary">Buy</button>
-              <h4>MinerStation +100/3s</h4>
+            <div class="col-5 text-center p-3 bg-dark rounded">
+              <button class="btn btn-primary m-3">Buy</button>
+              <p>MinerStation +100/3s</p>
             </div>
           </section>
         </div>
         <!-- SECTION users current / new stats -->
-        <div class="col-6">
-          <section class="row justify-content-between">
-            <div class="col-5">
+        <div class="col-6 p-3">
+          <section class="row p-3 justify-content-between">
+            <div class="col-5 text-center p-3">
               <h4>Click Stats</h4>
             </div>
-            <div class="col-5">
+            <div class="col-5 text-center p-3">
               <h4>Automatic Stats</h4>
             </div>
           </section>
-          <section class="row justify-content-between">
-            <div class="col-6 d-flex justify-content-between">
-              <div class="border-primary border border-3">
-                PickAxe QTY: <span id="pickaxe-qty">0</span>
-              </div>
-              <div class="border-primary border border-3">
-                TotalPWR: <span id="pickaxe-tp"></span>
-              </div>
+          <section class="row p-3 justify-content-between">
+            <div class="col-12 d-flex justify-content-between bg-dark rounded">
+              <div class=""><span id="pickaxe-qty">0</span> xPickAxe</div>
+              <div class="">TotalPWR: <span id="pickaxe-tp">0</span></div>
             </div>
-            <div class="col-5">
-              <p>Miner: +10/3s</p>
+            <div
+              class="col-12 d-flex justify-content-between bg-dark rounded mt-3"
+            >
+              <div><span id="Drill-qty">0</span> xDrill</div>
+              <div>TotalPWR:<span id="Drill-tp">0</span></div>
             </div>
           </section>
-          <section class="row justify-content-between">
-            <div class="col-6 d-flex justify-content-between">
-              <div class="border-primary border border-3">
-                Drill QTY: <span id="Drill-qty">0</span>
-              </div>
-              <div class="border-primary border border-3">
-                TotalPWR:<span id="Drill-tp"></span>
-              </div>
+          <section class="row p-3 justify-content-between">
+            <div class="col-12 p-3 bg-dark rounded">
+              <p>Miner: +10/3s</p>
             </div>
-            <div class="col-5">
-              <h4>MinerStation +100/3s</h4>
+            <div class="col-12 p-3 mt-3 bg-dark rounded">
+              <p>MinerStation +100/3s</p>
             </div>
           </section>
         </div>
@@ -150,6 +161,7 @@
     <!-- Other js -->
 
     <script src="app.js"></script>
+
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -161,6 +173,17 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
       integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
       crossorigin="anonymous"
+    ></script>
+
+    <!--Imports a model-viewer JavaScript code -->
+    <!--It helps to handle how the 3D Object would be displayed -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"
     ></script>
   </body>
 </html>
