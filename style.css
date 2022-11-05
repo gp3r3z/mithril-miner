@@ -18,9 +18,18 @@ body {
 }
 
 #content model-viewer {
-  min-height: 54vh;
+  min-height: 75vh;
   min-width: 54vw;
   top: 0;
   left: 0;
   border: none;
+}
+
+.shopStyle {
+  min-height: 90vh;
+  background-color: rgba(128, 0, 128, 0.201);
+}
+
+.productCard {
+  background-color: rgba(208, 0, 208, 0.201);
 }

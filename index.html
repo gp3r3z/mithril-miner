@@ -23,6 +23,7 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+      <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="style.css" />
     <style>
       body.debug .container,
@@ -53,7 +54,7 @@
       <section class="row justify-content-center">
         <div
           id="content"
-          class="border-success border-3 border col-12 col-md-1"
+          class=" col-12 col-md-1"
         >
           <model-viewer
             onclick="MiningResource()"
@@ -62,96 +63,146 @@
             camera-controls
           ></model-viewer>
         </div>
+
         <!-- <img src="./assets/runite_ore.png" alt="" /> -->
       </section>
 
       <!-- SECTION User Status -->
       <section class="row justify-content-center">
-        <div class="col-3 border border-primary rounded-top p-3 bg-secondary">
+        <div class="col-3 productCard border-3 rounded text-center p-3">
           ClickPower:<span id="user-click-power">1</span>
         </div>
-        <div class="col-3 border border-primary rounded-top p-3 bg-secondary">
+        <div class="col-3 productCard border-3 rounded text-center p-3">
           Resources: <span id="user-resource">0</span>
         </div>
-        <div class="col-3 border border-primary rounded-top p-3 bg-secondary">
+        <div class="col-3 productCard border-3 rounded text-center p-3">
           Timer <span id="user-timer">0</span>
         </div>
       </section>
-      <!-- SECTION User options stats-->
-      <section
-        class="row m-0 bg-secondary border-primary border border-3 rounded-top"
-      >
-        <!-- SECTION user additional upgrade options -->
-        <div class="col-6 p-3">
-          <section class="row justify-content-between p-3">
-            <div class="col-6 text-center">
-              <h4>Click Upgrades</h4>
-            </div>
-            <div class="col-6 -6 text-center">
-              <h4>Automatic Upgrades</h4>
-            </div>
-          </section>
-          <section class="row justify-content-between p-3">
-            <div class="col-5 text-center p-3 bg-dark rounded">
-              <button
-                onclick="buyClickUpgrade('pickaxe')"
-                class="btn btn-primary m-3"
-              >
-                Buy
-              </button>
-              <p>PickAxe: +1</p>
-              <p>Price: 10</p>
-            </div>
-            <div class="col-5 text-center p-3 bg-dark rounded">
-              <button class="btn btn-primary m-3">Buy</button>
-              <p>Miner: +10/3s</p>
-            </div>
-          </section>
-          <section class="row justify-content-between p-3">
-            <div class="col-5 text-center p-3 bg-dark rounded">
-              <button
-                onclick="buyClickUpgrade('Drill')"
-                class="btn btn-primary m-3"
-              >
-                Buy
-              </button>
-              <p>Drill: +5</p>
-              <p>Price: 15</p>
-            </div>
-            <div class="col-5 text-center p-3 bg-dark rounded">
-              <button class="btn btn-primary m-3">Buy</button>
-              <p>MinerStation +100/3s</p>
-            </div>
-          </section>
+      <!-- SECTION menu button -->
+      <section class="row justify-content-center">
+        <div class="col-2">
+ <button
+          class="btn btn-primary mt-2"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasBottom"
+          aria-controls="offcanvasBottom"
+        >
+         Buy resources
         </div>
-        <!-- SECTION users current / new stats -->
-        <div class="col-6 p-3">
-          <section class="row p-3 justify-content-between">
-            <div class="col-5 text-center p-3">
-              <h4>Click Stats</h4>
+       
+         
+        </button>
+      </section>
+      <!-- SECTION User options stats-->
+
+      <section
+        class="offcanvas offcanvas-bottom shopStyle"
+        tabindex="-1"
+        id="offcanvasBottom"
+        aria-labelledby="offcanvasBottomLabel"
+      >
+        <div class="offcanvas-header ">
+          <h5 class="offcanvas-title" id="offcanvasBottomLabel">Menu</h5>
+          <button
+         
+            type="button"
+            class=" btn-close-white"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body  ">
+       
+
+          <section
+            class="row m-0  border-primary border border-3 rounded-top "
+          >
+          <div class="col-6 p-3">
+              <!-- SECTION user additional upgrade options -->
+              <section class="row justify-content-between p-3">
+                <div class="col-6 text-center">
+                  <h4>Click Upgrades</h4>
+                </div>
+                <div class="col-6 -6 text-center">
+                  <h4>Automatic Upgrades</h4>
+                </div>
+              </section>
+              <section class="row justify-content-between p-3">
+                <div class="col-5 text-center p-3 productCard border-sucess border-3 border rounded">
+                  <button
+                    onclick="buyClickUpgrade('pickaxe')"
+                    class="btn btn-primary m-3"
+                  >
+                    Buy
+                  </button>
+                  <p>PickAxe: +1</p>
+                  <p>Price: 10</p>
+                </div>
+                <div class="col-5 text-center p-3  border-sucess border-3 border productCard rounded">
+                  <button class="btn btn-primary m-3">Buy</button>
+                  <p>Miner: +10/3s</p>
+                </div>
+              </section>
+              <section class="row justify-content-between p-3">
+                <div class="col-5 text-center p-3  border-sucess border-3 border productCard rounded">
+                  <button
+                    onclick="buyClickUpgrade('Drill')"
+                    class="btn btn-primary m-3"
+                  >
+                    Buy
+                  </button>
+                  <p>Drill: +5</p>
+                  <p>Price: 15</p>
+                </div>
+                <div class="col-5 text-center p-3  border-sucess border-3 border productCard rounded">
+                  <button class="btn btn-primary m-3">Buy</button>
+                  <p>MinerStation +100/3s</p>
+                </div>
+              </section>
             </div>
-            <div class="col-5 text-center p-3">
-              <h4>Automatic Stats</h4>
-            </div>
-          </section>
-          <section class="row p-3 justify-content-between">
-            <div class="col-12 d-flex justify-content-between bg-dark rounded">
-              <div class=""><span id="pickaxe-qty">0</span> xPickAxe</div>
-              <div class="">TotalPWR: <span id="pickaxe-tp">0</span></div>
-            </div>
-            <div
-              class="col-12 d-flex justify-content-between bg-dark rounded mt-3"
-            >
-              <div><span id="Drill-qty">0</span> xDrill</div>
-              <div>TotalPWR:<span id="Drill-tp">0</span></div>
-            </div>
-          </section>
-          <section class="row p-3 justify-content-between">
-            <div class="col-12 p-3 bg-dark rounded">
-              <p>Miner: +10/3s</p>
-            </div>
-            <div class="col-12 p-3 mt-3 bg-dark rounded">
-              <p>MinerStation +100/3s</p>
+            <!-- SECTION users current / new stats -->
+            <div class="col-6 p-3">
+              <section class="row p-3 justify-content-between">
+                <div class="col-5 text-center p-3">
+                  <h4>Click Stats</h4>
+                </div>
+                <div class="col-5 text-center p-3">
+                  <h4>Automatic Stats</h4>
+                </div>
+              </section>
+              <section class="row p-3 justify-content-between">
+                <div
+                  class="col-12 d-flex justify-content-between  border-sucess border-3 border productCard rounded"
+                >
+                  <div class=""><span id="pickaxe-qty">0</span> xPickAxe</div>
+                  <div class="">TotalPWR: <span id="pickaxe-tp">0</span></div>
+                </div>
+                <div
+                  class="col-12 d-flex justify-content-between  border-sucess border-3 border productCard rounded mt-3"
+                >
+                  <div><span id="Drill-qty">0</span> xDrill</div>
+                  <div>TotalPWR:<span id="Drill-tp">0</span></div>
+                </div>
+              </section>
+              <section class="row p-3 justify-content-between">
+                <div class="col-12 p-3  border-sucess border-3 border productCard rounded">
+                  <p>Miner: +10/3s</p>
+                </div>
+                <div class="col-12 p-3 mt-3  border-sucess border-3 border productCard rounded">
+                  <p>MinerStation +100/3s</p>
+                </div>
+                   <div class="col-3 rounded mt-3 p-3 border border-2 productCard">
+          CP:<span id="user-click-power">1</span>
+        </div>
+        <div class="col-3 rounded mt-3 p-3 border border-2 productCard">
+          Res: <span id="user-resource"></span>
+        </div>
+        <div class="col-3 rounded mt-3 p-3 border border-2 productCard">
+          <i class="mdi mdi-clock"></i><span id="user-timer"> 0</span>
+        </div>
+              </section>
             </div>
           </section>
         </div>
