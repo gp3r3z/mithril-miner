@@ -32,7 +32,7 @@ let automaticUpgrades = [
 
 
 
-let mithrilResource = 600
+let mithrilResource = 0
 let clickPower = 1
 let timer = 3000
 
@@ -45,7 +45,7 @@ function MiningResource() {
     console.log(mithrilResource)
 
     updateStats()
-
+    document.getElementById("pick-sound").play()
 }
 
 
@@ -175,10 +175,10 @@ function hireHelp(autoUP) {
 
         updateStats()
         // stop interval
-        setTimeout(() => {
-            console.log(newRes.name + ' completed quota')
-            clearInterval(helpInterval)
-        }, 3000)
+        // setTimeout(() => {
+        //     console.log(newRes.name + ' completed quota')
+        //     clearInterval(helpInterval)
+        // }, 3000)
     }
 
 
