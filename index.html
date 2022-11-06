@@ -61,6 +61,7 @@
             src="assets/scene.gltf"
             alt="mithril"
             camera-controls
+            
           ></model-viewer>
             <audio id="pick-sound" src="./assets/sounds/pickNoise.wav"></audio>
         </div>
@@ -84,7 +85,7 @@
          <!-- NOTE timer  -->
            <div class=""> Timer </div>
             <div class="progress mt-2">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;" aria-valuenow="25"
+            <div class="progress-bar bg-primary" id="timer-progress" role="progressbar" style="width: 100%;" aria-valuenow="25"
               aria-valuemin="0" aria-valuemax="100">New Resources</div>
           </div>
           <div><span id="user-timer"></span></div>
@@ -195,7 +196,7 @@
                 <div
                   class="col-12 d-flex justify-content-between  border-sucess border-3 border productCard rounded"
                 >
-                  <div class=""><span id="pickaxe-qty">0</span> xPickAxe</div>
+                  <div class="p-3"><span id="pickaxe-qty">0</span> x PickAxe</div>
                   <div class="">TTL PWR: <span id="pickaxe-tp">0</span></div>
                 </div>
                 <div

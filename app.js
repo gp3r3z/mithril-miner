@@ -32,7 +32,7 @@ let automaticUpgrades = [
 
 
 
-let mithrilResource = 0
+let mithrilResource = 600
 let clickPower = 1
 let timer = 3000
 
@@ -58,10 +58,13 @@ function updateStats() {
     let userRes = document.getElementById('user-resource')
     userRes.innerText = mithrilResource;
 
+    // NOTE part of timer pt2
+    let timerBarElem = document.getElementById('timer-progress')
+    debugger
+    timerBarElem.style.width = ((timer / 10) - 200) + '%'
 
 
-
-
+    console.log('TimerBar is updating ', timerBarElem)
 
     // Small widgets for side menu
     let smCP = document.getElementById('smCP')
@@ -159,14 +162,17 @@ function hireHelp(autoUP) {
         console.log('Help added ', newRes.quantity)
 
         let helpInterval = setInterval(() => {
-            console.log(newRes.name, "Res submitting quota")
+
+            // NOTE as of now my timer is set to tag ever 3 seconds but i also need to include a way to reduce a timer to show when it will be in another attempt
+            trackTimer = ((timer / 100) - 200)
+            console.log(newRes.name, "Res submitting quota", 'Timer left ', trackTimer)
 
             autoResources = (newRes.quantity * newRes.multiplier)
 
             console.log('Resources supplied', autoResources)
             mithrilResource += autoResources
 
-
+            timer = trackTimer
             updateStats()
 
 
