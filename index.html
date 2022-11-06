@@ -69,21 +69,33 @@
 
       <!-- SECTION User Status -->
       <section class="row justify-content-center">
-        <div class="col-3 productCard border-3 rounded text-center p-3">
-          ClickPower:<span id="user-click-power">1</span>
+        <div class="col-3 productCard border-3 rounded text-center p-3 border border-white">
+          <div>ClickPower</div>
+          <div><span id="user-click-power">1</span></div>
         </div>
-        <div class="col-3 productCard border-3 rounded text-center p-3">
-          Resources: <span id="user-resource">0</span>
+        
+        <div class="col-3 productCard border-3 rounded text-center p-3 border border-white">
+          <div>Resources</div>
+          <div> <span id="user-resource">0</span></div>
         </div>
-        <div class="col-3 productCard border-3 rounded text-center p-3">
-          Timer <span id="user-timer">0</span>
+        
+        <div class="col-3 productCard border-3 rounded text-center p-3 border border-white">
+         
+           <div class=""> Timer </div>
+            <div class="progress mt-2">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;" aria-valuenow="25"
+              aria-valuemin="0" aria-valuemax="100">New Resources</div>
+          </div>
+          <div><span id="user-timer"></span></div>
+         
         </div>
+         
       </section>
       <!-- SECTION menu button -->
       <section class="row justify-content-center">
         <div class="col-2">
  <button
-          class="btn btn-primary mt-2"
+          class="btn btn-outline-light mt-2 productCard"
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasBottom"
@@ -117,7 +129,7 @@
        
 
           <section
-            class="row m-0  border-primary border border-3 rounded-top "
+            class="row m-0  rounded-top "
           >
           <div class="col-6 p-3">
               <!-- SECTION user additional upgrade options -->
@@ -125,7 +137,7 @@
                 <div class="col-6 text-center">
                   <h4>Click Upgrades</h4>
                 </div>
-                <div class="col-6 -6 text-center">
+                <div class="col-6 text-center">
                   <h4>Automatic Upgrades</h4>
                 </div>
               </section>
@@ -133,7 +145,7 @@
                 <div class="col-5 text-center p-3 productCard border-sucess border-3 border rounded">
                   <button
                     onclick="buyClickUpgrade('pickaxe')"
-                    class="btn btn-primary m-3"
+                    class="btn btn-primary custom-btn m-3"
                   >
                     Buy
                   </button>
@@ -141,15 +153,17 @@
                   <p>Price: 10</p>
                 </div>
                 <div class="col-5 text-center p-3  border-sucess border-3 border productCard rounded">
-                  <button class="btn btn-primary m-3">Buy</button>
-                  <p>Miner: +10/3s</p>
+                  <button onclick="hireHelp('dwarf')" class="btn btn-primary custom-btn m-3">Buy</button>
+                  <div><p>Dwarf +10/3s</p></div>
+                  <div><p>Price 150</p></div>
+               
                 </div>
               </section>
               <section class="row justify-content-between p-3">
                 <div class="col-5 text-center p-3  border-sucess border-3 border productCard rounded">
                   <button
                     onclick="buyClickUpgrade('Drill')"
-                    class="btn btn-primary m-3"
+                    class="btn btn-primary custom-btn m-3"
                   >
                     Buy
                   </button>
@@ -157,14 +171,17 @@
                   <p>Price: 15</p>
                 </div>
                 <div class="col-5 text-center p-3  border-sucess border-3 border productCard rounded">
-                  <button class="btn btn-primary m-3">Buy</button>
-                  <p>MinerStation +100/3s</p>
+                  <button onclick="hireHelp('Rover')" class="btn btn-primary custom-btn m-3">Buy</button>
+
+                  <div> <p>Rover +100/3s</p></div>
+                  <div> <p>Price 100</p></div>
+                
                 </div>
               </section>
             </div>
             <!-- SECTION users current / new stats -->
             <div class="col-6 p-3">
-              <section class="row p-3 justify-content-between">
+              <section class="row p-3 justify-content-evenly">
                 <div class="col-5 text-center p-3">
                   <h4>Click Stats</h4>
                 </div>
@@ -177,30 +194,41 @@
                   class="col-12 d-flex justify-content-between  border-sucess border-3 border productCard rounded"
                 >
                   <div class=""><span id="pickaxe-qty">0</span> xPickAxe</div>
-                  <div class="">TotalPWR: <span id="pickaxe-tp">0</span></div>
+                  <div class="">TTL PWR: <span id="pickaxe-tp">0</span></div>
                 </div>
                 <div
                   class="col-12 d-flex justify-content-between  border-sucess border-3 border productCard rounded mt-3"
                 >
                   <div><span id="Drill-qty">0</span> xDrill</div>
-                  <div>TotalPWR:<span id="Drill-tp">0</span></div>
+                  <div>TTL PWR:<span id="Drill-tp">0</span></div>
                 </div>
               </section>
               <section class="row p-3 justify-content-between">
-                <div class="col-12 p-3  border-sucess border-3 border productCard rounded">
-                  <p>Miner: +10/3s</p>
+                <div class="col-12 p-3  border-sucess border-3 border productCard rounded text-center">
+                   <p>$<span id="dwarf-price">150</span></p>
+                  <p>(+10/3s)Dwarf x <span id="dwarf">0</span>
+                   </p>
+                   <p><span id="dwarf-total">0</span></p>
                 </div>
-                <div class="col-12 p-3 mt-3  border-sucess border-3 border productCard rounded">
-                  <p>MinerStation +100/3s</p>
+                <div class="col-12 p-3 mt-3  border-sucess border-3 border productCard rounded text-center">
+                   <p>$<span id="Rover-price">300</span></p>
+                  <p>(+100/3s)Rover x <span id="Rover">0</span> </p>
+                  
+                   <p><span id="Rover-total">0</span></p>
                 </div>
                    <div class="col-3 rounded mt-3 p-3 border border-2 productCard">
-          CP:<span id="user-click-power">1</span>
+          
+          <div>CP</div>
+          <div><span id="smCP">1</span></div>
         </div>
         <div class="col-3 rounded mt-3 p-3 border border-2 productCard">
-          Res: <span id="user-resource"></span>
+          <div>Res</div>
+          <div> <span id="sm-resource"></span></div>
         </div>
         <div class="col-3 rounded mt-3 p-3 border border-2 productCard">
-          <i class="mdi mdi-clock"></i><span id="user-timer"> 0</span>
+          <div class="text-center"><i class="mdi mdi-clock "></i></div>
+          <div><span id="sm-timer"> 0</span></div>
+       
         </div>
               </section>
             </div>
