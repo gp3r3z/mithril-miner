@@ -32,11 +32,15 @@ let automaticUpgrades = [
 
 
 
-let mithrilResource = 600
+let mithrilResource = 250
 let clickPower = 1
 let timer = 3000
+let barStatus = 100
 
-// TODO trying to increase click power - Correctly 
+
+
+
+
 function MiningResource() {
 
     console.log("Resources mining")
@@ -58,13 +62,6 @@ function updateStats() {
     let userRes = document.getElementById('user-resource')
     userRes.innerText = mithrilResource;
 
-    // NOTE part of timer pt2
-    let timerBarElem = document.getElementById('timer-progress')
-    debugger
-    timerBarElem.style.width = ((timer / 10) - 200) + '%'
-
-
-    console.log('TimerBar is updating ', timerBarElem)
 
     // Small widgets for side menu
     let smCP = document.getElementById('smCP')
@@ -75,9 +72,9 @@ function updateStats() {
 
 
     let smTimer = document.getElementById('sm-timer')
-    smTimer.innerText = timer
+    smTimer.innerText = barStatus
 
-    // console.log(timer)
+
 
 }
 // NOTE I can possibly just put this back into the buy click upgrade
@@ -86,7 +83,7 @@ function updateResources(item) {
     item.price = item.price + (item.price * .6)
     console.log("Price increases ohhhhhh jebus")
 
-    // NOTE still trying to add up the math correctly on 3 add upgrade
+    // TODO still trying to add up the math correctly on 3 add upgrade
 
     if (item.name == 'pickaxe' || item.name == 'Drill') {
         clickPower = clickPower + (item.quantity * item.multiplier)
@@ -100,7 +97,7 @@ function updateResources(item) {
         console.log("TotalPower ", upgradePwr)
         upgradePwr.innerText = item.quantity * item.multiplier
     }
-    let oldTotal = 0
+    let newTotal = 0
     let getHelp = document.getElementById(item.name)
     let gethelpTotal = document.getElementById(item.name + '-total')
 
@@ -110,14 +107,13 @@ function updateResources(item) {
         let newPrice = item.price + item.price
 
         getHelp.innerText = item.quantity
-        oldTotal = oldTotal + (item.quantity * item.multiplier)
+        newTotal = newTotal + (item.quantity * item.multiplier)
         item.price = newPrice
         getNewPriceElem.innerText = item.price
 
         console.log(" The new price for automation muahaha", newPrice)
 
-        gethelpTotal.innerText = oldTotal
-
+        gethelpTotal.innerText = newTotal
 
 
     }
@@ -125,8 +121,6 @@ function updateResources(item) {
 
 }
 
-// TODO Trying to get total power to equal my clickpower after 3rd attempt math goes wack 
-// 
 function buyClickUpgrade(upgradeItem) {
     console.log('Clicking buy upgrade')
     let newUP = clickUpgrades.find(cU => cU.name == upgradeItem)
@@ -154,31 +148,22 @@ function hireHelp(autoUP) {
         window.alert("Yo Yo you broke \n Resource: \n", mithrilResource, 'is less than the price ', newRes.price)
     } else {
         let autoResources = 0
+
         mithrilResource = mithrilResource - newRes.price
         console.log("Resources deducted " + mithrilResource)
-
         updateResources(newRes)
-
         console.log('Help added ', newRes.quantity)
-
+        // NOTE working on the set interval but havin some thing going lol 
+        setInterval(getAutoResource, 1000)
         let helpInterval = setInterval(() => {
-
-            // NOTE as of now my timer is set to tag ever 3 seconds but i also need to include a way to reduce a timer to show when it will be in another attempt
-            trackTimer = ((timer / 100) - 200)
-            console.log(newRes.name, "Res submitting quota", 'Timer left ', trackTimer)
-
+            console.log('Resources supplied', autoResources)
             autoResources = (newRes.quantity * newRes.multiplier)
 
-            console.log('Resources supplied', autoResources)
             mithrilResource += autoResources
-
-            timer = trackTimer
+            console.log(mithrilResource + ' added')
             updateStats()
 
-
         }, timer)
-        debugger
-
         updateStats()
         // stop interval
         // setTimeout(() => {
@@ -190,6 +175,25 @@ function hireHelp(autoUP) {
 
 }
 
-
-
 updateStats()
+
+function getAutoResource() {
+
+    // NOTE as of now my timer is set to tag ever 3 seconds but i also need to include a way to reduce a timer to show when it will be in another attempt
+
+    let timerBarElem = document.getElementById('timer-progress')
+    debugger
+    barStatus -= 25
+    if (barStatus <= 0) {
+        barStatus = 100
+
+    }
+    timerBarElem.style.width = barStatus + '%'
+
+    console.log('TimerBar is updating ', timerBarElem.style.width)
+    updateStats()
+}
+
+
+
+
